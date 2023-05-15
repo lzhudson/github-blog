@@ -1,5 +1,5 @@
 export const functions = {
   convert: {
-    pxToRem: (value: number) => `${value / 16}px`
+    pxToRem: (value: number) => `${value / 16}rem`
   }
 }
