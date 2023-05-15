@@ -15,7 +15,8 @@ export const defaultTheme = {
     blue: '#3294F8',
   },
   fonts: {
-    nunito: 'Nunito, sans-serif'
+    nunito: 'Nunito, sans-serif',
+    coda: 'Coda, cursive',
   },
   functions: functions
 }
