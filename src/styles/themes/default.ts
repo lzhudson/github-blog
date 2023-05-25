@@ -17,6 +17,7 @@ export const defaultTheme = {
   fonts: {
     nunito: 'Nunito, sans-serif',
     coda: 'Coda, cursive',
+    firaCode: 'Fira Code',
   },
   functions: functions
 }
