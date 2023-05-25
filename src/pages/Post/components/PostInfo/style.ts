@@ -10,6 +10,7 @@ export const PostInfoCard = styled(Card)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: -85px;
 `
 
 export const PostInfoHeader = styled.header`
