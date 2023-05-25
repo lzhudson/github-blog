@@ -18,6 +18,7 @@ export const CardUserImageContainer = styled.div`
 `;
 
 export const CardUserInfoContainer = styled.div`
+  width: 100%;
   header {
     display: flex;
     justify-content: space-between;
