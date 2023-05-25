@@ -2,9 +2,13 @@ import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GithubLinkContainer } from "./style";
 
-export function GithubLink() {
+interface GithubLinkProps {
+  link: string
+}
+
+export function GithubLink({ link } : GithubLinkProps) {
   return (
-    <GithubLinkContainer href="">
+    <GithubLinkContainer href={link}>
       Github
       <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
     </GithubLinkContainer>

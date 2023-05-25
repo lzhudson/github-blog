@@ -3,32 +3,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBuilding, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { GithubLink } from "../../../../components/GithubLink";
-export function CardUser() {
+import { User } from "../..";
+
+
+export function CardUser({ avatar_url, bio, company, followers, html_url, login, name } : User) {
   return (
     <CardUserContainer>
       <CardUserImageContainer>
-        <img src="https://github.com/lzhudson.png" alt="Hudson Holanda" />
+        <img src={avatar_url} alt="Hudson Holanda" />
       </CardUserImageContainer>
-      <CardUserInfoContainer className="user-info-container">
+      <CardUserInfoContainer>
         <header>
-          <h1>Hudson Holanda</h1>
-          <GithubLink />
+          <h1>{name}</h1>
+          <GithubLink link={html_url} />
         </header>
-        <p>Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.</p>
+        <p>{bio}</p>
         <CardUserSocialList className="user-social-list">
           <li>
             <FontAwesomeIcon icon={faGithub} />
-            <span>lzhudson</span>
+            <span>{login}</span>
           </li>
           <li>
             <FontAwesomeIcon icon={faBuilding} />
-            <span>Joyjet</span>
+            <span>{company}</span>
           </li>
           <li>
             <FontAwesomeIcon icon={faUserGroup} />
-            <span>32 seguidores</span>
+            <span>{followers} seguidores</span>
           </li>
-          
         </CardUserSocialList>
       </CardUserInfoContainer>
     </CardUserContainer>
