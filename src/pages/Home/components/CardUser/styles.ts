@@ -5,6 +5,7 @@ export const CardUserContainer = styled(Card)`
   display: flex;
   align-items: center;
   gap: ${(props) => props.theme.functions.convert.pxToRem(32)};
+  margin-top: -85px;
 `;
 export const CardUserImageContainer = styled.div`
   border-radius: 8px;
