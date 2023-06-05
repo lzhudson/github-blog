@@ -9,8 +9,8 @@ interface PublicationCardProps {
 
 export function PublicationCard({ publication }: PublicationCardProps) {
   return (
-    <Link to={`${publication.number}`}>
-      <PublicationCardContainer>
+    <PublicationCardContainer>
+      <Link to={`${publication.number}`}>
         <header>
           <h3>
             {publication.title}
@@ -20,7 +20,7 @@ export function PublicationCard({ publication }: PublicationCardProps) {
         <p>
           {publication.body.length > 181 ? `${publication.body.substring(0, 181)}...` : publication.body}
         </p>
-      </PublicationCardContainer>
-    </Link>
+      </Link>
+    </PublicationCardContainer>
   )
 }

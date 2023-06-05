@@ -14,7 +14,6 @@ interface PostInfoProps {
 }
 
 export function PostInfo({ title, createdAt, postLink, totalComments } : PostInfoProps) {
-  console.log(createdAt)
   return (
     <PostInfoCard>
       <PostInfoHeader>
@@ -31,7 +30,7 @@ export function PostInfo({ title, createdAt, postLink, totalComments } : PostInf
         </li>
         <li>
           <FontAwesomeIcon icon={faCalendarDay} />
-          <time>{distanceToNow('2023-05-26T06:45:53Z')}</time>
+          <time>{distanceToNow(createdAt)}</time>
         </li>
         {totalComments ? (
           <li>

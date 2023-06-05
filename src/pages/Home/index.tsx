@@ -64,13 +64,16 @@ export function Home() {
         login={user.login}
         name={user.name}
       />
-      <PublicationsHeader />
-      <SearchForm 
-        search={search}
-        onChangeSearch={onChangeSearch} 
-      />
+
       {publications.length ? (
-        <PublicationsList publications={publications} />
+        <>
+          <PublicationsHeader publications={publications} />
+          <SearchForm
+            search={search}
+            onChangeSearch={onChangeSearch}
+          />
+          <PublicationsList publications={publications} />
+        </>
       ) : 'Carregando...'}
     </Container>
   )

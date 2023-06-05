@@ -26,4 +26,7 @@ export const PublicationCardContainer = styled.article`
     color: ${props => props.theme.colors["base-text"]};
     line-height: 160%;
   }
+  a {
+    text-decoration: none;
+  }
 `;
