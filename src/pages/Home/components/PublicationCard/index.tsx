@@ -1,22 +1,26 @@
+import { Link } from "react-router-dom";
 import { Publication } from "../..";
 import { PublicationCardContainer } from "./styles";
+import { distanceToNow } from "../../../../utils/date";
 
 interface PublicationCardProps {
   publication: Publication;
 }
 
-export function PublicationCard({ publication } : PublicationCardProps) {
+export function PublicationCard({ publication }: PublicationCardProps) {
   return (
-    <PublicationCardContainer>
-      <header>
-        <h3>
-          {publication.title}
-        </h3>
-        <time>Há 1 dia</time>
-      </header>
-      <p>
-        {publication.body.length > 181 ?`${publication.body.substring(0, 181)}...` : publication.body}
-      </p>
-    </PublicationCardContainer>
+    <Link to={`${publication.number}`}>
+      <PublicationCardContainer>
+        <header>
+          <h3>
+            {publication.title}
+          </h3>
+          <time>{distanceToNow(publication.created_at)}</time>
+        </header>
+        <p>
+          {publication.body.length > 181 ? `${publication.body.substring(0, 181)}...` : publication.body}
+        </p>
+      </PublicationCardContainer>
+    </Link>
   )
 }

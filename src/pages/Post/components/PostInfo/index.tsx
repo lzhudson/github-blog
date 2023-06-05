@@ -3,16 +3,26 @@ import { faCalendarDay, faChevronLeft, faComment } from "@fortawesome/free-solid
 import { PostInfoCard, PostInfoDataList, PostInfoHeader } from "./style";
 import { GithubLink } from "../../../../components/GithubLink";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { distanceToNow } from "../../../../utils/date";
+import { Link } from "react-router-dom";
 
-export function PostInfo() {
+interface PostInfoProps {
+  title: string;
+  createdAt: string;
+  totalComments: number;
+  postLink: string;
+}
+
+export function PostInfo({ title, createdAt, postLink, totalComments } : PostInfoProps) {
+  console.log(createdAt)
   return (
     <PostInfoCard>
       <PostInfoHeader>
-        <a className="back-link" href=""><FontAwesomeIcon icon={faChevronLeft} />Voltar</a>
-        <GithubLink />
+        <Link className="back-link" to="/"><FontAwesomeIcon icon={faChevronLeft} />Voltar</Link>
+        <GithubLink link={postLink} />
       </PostInfoHeader>
       <h1>
-        JavaScript data types and data structure
+        {title}
       </h1>
       <PostInfoDataList className="user-social-list">
         <li>
@@ -21,13 +31,14 @@ export function PostInfo() {
         </li>
         <li>
           <FontAwesomeIcon icon={faCalendarDay} />
-          <time>Há 1 dia</time>
+          <time>{distanceToNow('2023-05-26T06:45:53Z')}</time>
         </li>
-        <li>
-          <FontAwesomeIcon icon={faComment} />
-          <span>5 comentário</span>
-        </li>
-
+        {totalComments ? (
+          <li>
+            <FontAwesomeIcon icon={faComment} />
+            <span>{totalComments} comentário {totalComments > 1 ? 's' : ''}</span>
+          </li>
+        ) : ''}
       </PostInfoDataList>
     </PostInfoCard>
   )
