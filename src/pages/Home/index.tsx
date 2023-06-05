@@ -26,6 +26,7 @@ export interface Publication {
 export function Home() {
   const [user, setUser] = useState<User>({} as User);
   const [publications, setPublications] = useState<Publication[]>([]);
+  const [search, setSearch] = useState('')
 
   async function getGithubUser() {
     const response = await api.get(`/users/lzhudson`)
@@ -33,16 +34,24 @@ export function Home() {
     setUser(user)
   }
 
-  async function getPublications() {
-    const response = await api.get('search/issues?q=repo:lzhudson/github-blog');
+  async function getPublications(searchQuery: string) {
+    const response = await api.get(`search/issues?q=${searchQuery}%20repo:lzhudson/github-blog`);
     const { data: publications } = response;
     setPublications(publications.items);
   }
 
+  function onChangeSearch(search: string) {
+    setSearch(search)
+  }
+
   useEffect(() => {
     getGithubUser();
-    getPublications();
+    getPublications(search);
   }, [])
+
+  useEffect(() => {
+    getPublications(search)
+  }, [search])
 
   return (
     <Container>
@@ -56,7 +65,10 @@ export function Home() {
         name={user.name}
       />
       <PublicationsHeader />
-      <SearchForm />
+      <SearchForm 
+        search={search}
+        onChangeSearch={onChangeSearch} 
+      />
       {publications.length ? (
         <PublicationsList publications={publications} />
       ) : 'Carregando...'}
