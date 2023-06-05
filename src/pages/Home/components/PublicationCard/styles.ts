@@ -4,7 +4,8 @@ export const PublicationCardContainer = styled.article`
   background: ${(props) => props.theme.colors["base-post"]};
   border-radius: 10px;
   padding: 2rem;
-  
+  min-height: 260px;
+  max-height: 260px;
   header {
     display: flex;
     justify-content: space-between;

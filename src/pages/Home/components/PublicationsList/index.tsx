@@ -1,27 +1,19 @@
+import { Publication } from "../..";
 import { PublicationCard } from "../PublicationCard";
 import { PublicationsListContainer } from "./style";
 
-export function PublicationsList() {
+interface PublcationsListProps {
+  publications: Publication[];
+}
+
+export function PublicationsList({ publications }: PublcationsListProps) {
   return (
     <PublicationsListContainer>
-      <li>
-        <PublicationCard />
-      </li>
-      <li>
-        <PublicationCard />
-      </li>
-      <li>
-        <PublicationCard />
-      </li>
-      <li>
-        <PublicationCard />
-      </li>
-      <li>
-        <PublicationCard />
-      </li>
-      <li>
-        <PublicationCard />
-      </li>
+      {publications.map(publication => (
+        <li key={publication.number}>
+          <PublicationCard publication={publication} />
+        </li>
+      ))}
     </PublicationsListContainer>
   )
 }
