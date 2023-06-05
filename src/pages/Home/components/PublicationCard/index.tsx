@@ -1,16 +1,21 @@
+import { Publication } from "../..";
 import { PublicationCardContainer } from "./styles";
 
-export function PublicationCard() {
+interface PublicationCardProps {
+  publication: Publication;
+}
+
+export function PublicationCard({ publication } : PublicationCardProps) {
   return (
     <PublicationCardContainer>
       <header>
         <h3>
-          JavaScript data types and data structures
+          {publication.title}
         </h3>
         <time>Há 1 dia</time>
       </header>
       <p>
-        Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...
+        {publication.body.length > 181 ?`${publication.body.substring(0, 181)}...` : publication.body}
       </p>
     </PublicationCardContainer>
   )

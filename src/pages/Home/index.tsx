@@ -16,8 +16,16 @@ export interface User {
   name: string;
 }
 
+export interface Publication {
+  number: number;
+  title: string;
+  body: string;
+  created_at: string;
+}
+
 export function Home() {
   const [user, setUser] = useState<User>({} as User);
+  const [publications, setPublications] = useState<Publication[]>([]);
 
   async function getGithubUser() {
     const response = await api.get(`/users/lzhudson`)
@@ -25,13 +33,20 @@ export function Home() {
     setUser(user)
   }
 
+  async function getPublications() {
+    const response = await api.get('search/issues?q=repo:lzhudson/github-blog');
+    const { data: publications } = response;
+    setPublications(publications.items);
+  }
+
   useEffect(() => {
     getGithubUser();
+    getPublications();
   }, [])
 
   return (
     <Container>
-      <CardUser 
+      <CardUser
         avatar_url={user.avatar_url}
         bio={user.bio}
         company={user.company}
@@ -42,7 +57,9 @@ export function Home() {
       />
       <PublicationsHeader />
       <SearchForm />
-      <PublicationsList />
+      {publications.length ? (
+        <PublicationsList publications={publications} />
+      ) : 'Carregando...'}
     </Container>
   )
 }
