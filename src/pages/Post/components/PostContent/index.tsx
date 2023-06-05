@@ -1,5 +1,5 @@
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Code, PostContentContainer } from "./style";
+import { PostContentContainer } from "./style";
 
 interface PostContentProps {
   content: string;
