@@ -30,7 +30,7 @@ export function PostInfo({ title, createdAt, postLink, totalComments } : PostInf
         </li>
         <li>
           <FontAwesomeIcon icon={faCalendarDay} />
-          <time>{distanceToNow(createdAt)}</time>
+          <time>{createdAt && distanceToNow(createdAt)}</time>
         </li>
         {totalComments ? (
           <li>

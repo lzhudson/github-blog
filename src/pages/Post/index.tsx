@@ -20,7 +20,6 @@ export function Post() {
   async function getPostData() {
     setLoading(true);
     const response = await api.get(`/repos/lzhudson/github-blog/issues/${id}`);
-    console.log(response)
     setPostContent(response.data)
     setLoading(false)
   }
