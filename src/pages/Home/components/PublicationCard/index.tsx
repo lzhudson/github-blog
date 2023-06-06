@@ -10,7 +10,7 @@ interface PublicationCardProps {
 export function PublicationCard({ publication }: PublicationCardProps) {
   return (
     <PublicationCardContainer>
-      <Link to={`${publication.number}`}>
+      <Link to={`/post/${publication.number}`}>
         <header>
           <h3>
             {publication.title}
