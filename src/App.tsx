@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom"
 
 export function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL} >
+    <BrowserRouter basename={`${import.meta.env.DEV} ? '/' : '/github-blog/'`} >
       <ThemeProvider theme={defaultTheme}>
         <Router />
         <GlobalStyle />
