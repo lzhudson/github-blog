@@ -5,6 +5,7 @@ import { PublicationsHeader } from "./components/PublicationsHeader";
 import { PublicationsList } from "./components/PublicationsList";
 import { SearchForm } from "./components/SearchForm";
 import { api } from "../../api/axios";
+import { LoadingMessage } from "./components/LoadingMessage";
 
 export interface User {
   avatar_url: string;
@@ -27,6 +28,7 @@ export function Home() {
   const [user, setUser] = useState<User>({} as User);
   const [publications, setPublications] = useState<Publication[]>([]);
   const [search, setSearch] = useState('')
+  const [loading, setLoading] = useState(false);
 
   async function getGithubUser() {
     const response = await api.get(`/users/lzhudson`)
@@ -64,17 +66,19 @@ export function Home() {
         login={user.login}
         name={user.name}
       />
-
-      {publications.length ? (
+      
         <>
           <PublicationsHeader publications={publications} />
           <SearchForm
             search={search}
             onChangeSearch={onChangeSearch}
           />
+        </>
+      {publications.length ? (
+        <>
           <PublicationsList publications={publications} />
         </>
-      ) : 'Carregando...'}
+      ) : <LoadingMessage />}
     </Container>
   )
 }
