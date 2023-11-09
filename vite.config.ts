@@ -5,6 +5,6 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
     plugins: [react()],
-    base: env.NODE_ENV ? '/' : '/github-blog/'
+    base: '/github-blog'
   }
 })
